@@ -1,17 +1,18 @@
-import { useState } from 'react';
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs';
 
-export const Likes = () => {
-  const [likes, setLikes] = useState<boolean>(false);
+import { useLocalStorage } from '../hooks/useLocalStorage';
+
+export const Likes: React.FC<{ itemTitle: string }> = ({ itemTitle }) => {
+  const [isLiked, setIsLiked] = useLocalStorage<boolean>(itemTitle, false);
 
   return (
     <>
-      {likes ? (
-        <button className='likeButton' onClick={() => setLikes(false)}>
+      {isLiked ? (
+        <button className='likeButton' onClick={() => setIsLiked(false)}>
           <BsFillHeartFill size={18} color='red' />
         </button>
       ) : (
-        <button className='likeButton' onClick={() => setLikes(true)}>
+        <button className='likeButton' onClick={() => setIsLiked(true)}>
           <BsHeart size={18} />
         </button>
       )}

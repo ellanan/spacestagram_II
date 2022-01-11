@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { Likes } from './components/Likes';
 import { Loading } from './components/Loading';
 
@@ -64,7 +65,7 @@ function App() {
             <h3>{item.title}</h3>
             <div>{item.date}</div>
             <p>{item.explanation}</p>
-            <Likes />
+            <Likes itemTitle={item.title} />
           </div>
         );
       })}
