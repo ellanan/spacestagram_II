@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Likes } from './components/Likes';
 
 export type SpacestagramType = {
   copyright?: string;
@@ -54,6 +55,7 @@ function App() {
               <h3>{item.title}</h3>
               <div>{item.date}</div>
               <p>{item.explanation}</p>
+              <Likes />
             </div>
           );
         })
