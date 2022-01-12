@@ -41,8 +41,8 @@ export const PictureOfTheDay: React.FC<{
           />
         )}
         <figcaption>
-          <div className='titleExplanationWrapper'>
-            <h2 className='pictureOfTheDayTitle'>{title}</h2>
+          <div className='title-explanation-wrapper'>
+            <h2 className='picture-of-the-day-title'>{title}</h2>
             <p className='explanation'>
               {isFocused ? explanation : `${explanation.substring(0, 55)} ...`}
               <button
@@ -56,9 +56,9 @@ export const PictureOfTheDay: React.FC<{
               </button>
             </p>
           </div>
-          <div className='likeAndDateWrapper'>
+          <div className='like-and-date-wrapper'>
             <button
-              className='likeButton'
+              className='like-button'
               onClick={(e) => setIsLiked(!isLiked)}
             >
               {isLiked ? (
@@ -67,7 +67,7 @@ export const PictureOfTheDay: React.FC<{
                 <BsHeart size={18} />
               )}
             </button>
-            <time className='dateOfCapture'>{`Date of capture: ${date}`}</time>
+            <time className='date-of-capture'>{`Date of capture: ${date}`}</time>
           </div>
         </figcaption>
       </figure>

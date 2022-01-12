@@ -53,10 +53,10 @@ function App() {
   console.log(data);
 
   return (
-    <div className='mainWrapper'>
-      <h1 className='spacestagramTitle'>Spacestagram</h1>
+    <div className='main-wrapper'>
+      <h1 className='spacestagram-title'>Spacestagram</h1>
       {loading ? <span>loading...</span> : null}
-      <div className='cardWrapper'>
+      <div className='card-wrapper'>
         {data?.map((item) => {
           return (
             <PictureOfTheDay
