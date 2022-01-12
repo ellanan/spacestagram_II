@@ -59,10 +59,14 @@ export const PictureOfTheDay: React.FC<{
           <div className='like-and-date-wrapper'>
             <button
               className='like-button'
-              onClick={(e) => setIsLiked(!isLiked)}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                setIsLiked(!isLiked);
+              }}
             >
               {isLiked ? (
-                <BsFillHeartFill size={18} color='red' />
+                <BsFillHeartFill size={18} color='rgb(237, 73, 86)' />
               ) : (
                 <BsHeart size={18} />
               )}

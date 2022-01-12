@@ -76,6 +76,7 @@ a {
 }
 
 .explanation {
+  font-size: 14px;
   padding: 0 1rem;
 }
 
@@ -99,6 +100,14 @@ a {
   line-height: 0;
 }
 
+.like-button:hover {
+  background-color: rgba(249, 24, 128, 0.1);
+  border-radius: 50%;
+  color: rgb(237, 73, 86);
+}
+.like-button svg {
+  margin-bottom: -2px;
+}
 .date-of-capture {
   font-size: 12px;
   color: #666;
