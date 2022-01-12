@@ -1,14 +1,15 @@
+import _ from 'lodash';
 import { useEffect, useState } from 'react';
 
-import { Likes } from './components/Likes';
-import { Loading } from './components/Loading';
+import { PictureOfTheDay } from './components/PictureOfTheDay';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 export type SpacestagramType = {
   copyright?: string;
   date: string;
   explanation: string;
   hdurl: string;
-  media_type: string;
+  media_type: 'image' | 'video';
   service_version: string;
   title: string;
   url: string;
@@ -17,6 +18,10 @@ export type SpacestagramType = {
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<null | Array<SpacestagramType>>(null);
+  const [likedItems, setLikedItems] = useLocalStorage<Array<string>>(
+    'likedItems',
+    []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +29,7 @@ function App() {
 
       try {
         const response = await fetch(
-          `https://api.nasa.gov/planetary/apod?api_key=${
+          `https://spacestagram.ellanan.com/api/apod?api_key=${
             process.env.REACT_APP_NASA_API_KEY
           }&start_date=${'2022-01-01'}&end_date=${'2022-01-10'}`
         );
@@ -40,35 +45,32 @@ function App() {
     fetchData();
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   console.log(data);
 
   return (
-    <div>
+    <div className='mainWrapper'>
       <h1 className='spacestagramTitle'>Spacestagram</h1>
-      {data?.map((item: any) => {
-        return (
-          <div className='card' key={item.title}>
-            {item.media_type === 'image' ? (
-              <img className='imageVideoSize' src={item.url} alt='' />
-            ) : (
-              <iframe
-                className='imageVideoSize'
-                title={item.title}
-                src={item.url}
-                allowFullScreen
-              />
-            )}
-            <h3>{item.title}</h3>
-            <div>{item.date}</div>
-            <p>{item.explanation}</p>
-            <Likes itemTitle={item.title} />
-          </div>
-        );
-      })}
+      {loading ? <span>loading...</span> : null}
+      <div className='cardWrapper'>
+        {data?.map((item) => {
+          return (
+            <PictureOfTheDay
+              date={item.date}
+              title={item.title}
+              mediaUrl={item.url}
+              mediaType={item.media_type}
+              isLiked={likedItems.includes(item.date)}
+              setIsLiked={(isLiked) => {
+                setLikedItems(
+                  isLiked
+                    ? [...likedItems, item.date]
+                    : _.without(likedItems, item.date)
+                );
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
