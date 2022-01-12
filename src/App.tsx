@@ -18,6 +18,11 @@ export type SpacestagramType = {
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<null | Array<SpacestagramType>>(null);
+  const [pictureInFocus, setPictureInFocus] = useState<string | null>(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('focus');
+  });
+
   const [likedItems, setLikedItems] = useLocalStorage<Array<string>>(
     'likedItems',
     []
@@ -59,6 +64,7 @@ function App() {
               date={item.date}
               title={item.title}
               mediaUrl={item.url}
+              explanation={item.explanation}
               mediaType={item.media_type}
               isLiked={likedItems.includes(item.date)}
               setIsLiked={(isLiked) => {
@@ -67,6 +73,16 @@ function App() {
                     ? [...likedItems, item.date]
                     : _.without(likedItems, item.date)
                 );
+              }}
+              isFocused={pictureInFocus === item.date}
+              setIsFocused={(isFocused) => {
+                if (isFocused) {
+                  setPictureInFocus(item.date);
+                  window.history.pushState(null, '', `?focus=${item.date}`);
+                } else {
+                  setPictureInFocus(null);
+                  window.history.pushState(null, '');
+                }
               }}
             />
           );
