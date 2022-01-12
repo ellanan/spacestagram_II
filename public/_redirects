@@ -1,0 +1,2 @@
+# proxy nasa's api (it is too unreliable, let's cache responses)
+/api/apod   https://api.nasa.gov/planetary/apod 200
