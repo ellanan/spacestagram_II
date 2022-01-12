@@ -55,6 +55,7 @@ function App() {
         {data?.map((item) => {
           return (
             <PictureOfTheDay
+              key={item.date}
               date={item.date}
               title={item.title}
               mediaUrl={item.url}
