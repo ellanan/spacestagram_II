@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { PictureOfTheDay } from './components/PictureOfTheDay';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { Modal } from './components/Modal';
 
 export type SpacestagramType = {
   copyright?: string;
@@ -59,32 +60,60 @@ function App() {
       <div className='card-wrapper'>
         {data?.map((item) => {
           return (
-            <PictureOfTheDay
-              key={item.date}
-              date={item.date}
-              title={item.title}
-              mediaUrl={item.url}
-              explanation={item.explanation}
-              mediaType={item.media_type}
-              isLiked={likedItems.includes(item.date)}
-              setIsLiked={(isLiked) => {
-                setLikedItems(
-                  isLiked
-                    ? [...likedItems, item.date]
-                    : _.without(likedItems, item.date)
-                );
-              }}
-              isFocused={pictureInFocus === item.date}
-              setIsFocused={(isFocused) => {
-                if (isFocused) {
-                  setPictureInFocus(item.date);
-                  window.history.pushState(null, '', `?focus=${item.date}`);
-                } else {
-                  setPictureInFocus(null);
-                  window.history.pushState(null, '');
-                }
-              }}
-            />
+            <div>
+              <Modal
+                key={item.title}
+                date={item.date}
+                title={item.title}
+                mediaUrl={item.url}
+                explanation={item.explanation}
+                mediaType={item.media_type}
+                isLiked={likedItems.includes(item.date)}
+                setIsLiked={(isLiked) => {
+                  setLikedItems(
+                    isLiked
+                      ? [...likedItems, item.date]
+                      : _.without(likedItems, item.date)
+                  );
+                }}
+                isFocused={pictureInFocus === item.date}
+                setIsFocused={(isFocused) => {
+                  if (isFocused) {
+                    setPictureInFocus(item.date);
+                    window.history.pushState(null, '', `?focus=${item.date}`);
+                  } else {
+                    setPictureInFocus(null);
+                    window.history.pushState(null, '');
+                  }
+                }}
+              />
+              <PictureOfTheDay
+                key={item.date}
+                date={item.date}
+                title={item.title}
+                mediaUrl={item.url}
+                explanation={item.explanation}
+                mediaType={item.media_type}
+                isLiked={likedItems.includes(item.date)}
+                setIsLiked={(isLiked) => {
+                  setLikedItems(
+                    isLiked
+                      ? [...likedItems, item.date]
+                      : _.without(likedItems, item.date)
+                  );
+                }}
+                isFocused={pictureInFocus === item.date}
+                setIsFocused={(isFocused) => {
+                  if (isFocused) {
+                    setPictureInFocus(item.date);
+                    window.history.pushState(null, '', `?focus=${item.date}`);
+                  } else {
+                    setPictureInFocus(null);
+                    window.history.pushState(null, '');
+                  }
+                }}
+              />
+            </div>
           );
         })}
       </div>
