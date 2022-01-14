@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { DateTime } from 'luxon';
 import { useEffect, useState } from 'react';
 
 import { PictureOfTheDay } from './components/PictureOfTheDay';
@@ -18,7 +19,7 @@ export type SpacestagramType = {
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState<null | Array<SpacestagramType>>(null);
+  const [data, setData] = useState<Array<SpacestagramType>>([]);
   const [pictureInFocus, setPictureInFocus] = useState<string | null>(() => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('focus');
@@ -29,18 +30,24 @@ function App() {
     []
   );
 
+  const [endDate, setEndDate] = useState<DateTime>(DateTime.now());
+  const startDate = endDate.minus({ days: 8 });
+
+  const endDateString = endDate.toFormat('yyyy-MM-dd');
+  const startDateString = startDate.toFormat('yyyy-MM-dd');
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
 
       try {
         const response = await fetch(
-          `https://spacestagram.ellanan.com/api/apod?api_key=${
-            process.env.REACT_APP_NASA_API_KEY
-          }&start_date=${'2022-01-01'}&end_date=${'2022-01-10'}`
+          `https://spacestagram.ellanan.com/api/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${startDateString}&end_date=${endDateString}`
         );
         const result = await response.json();
-        setData(result);
+        setData((previousData) => {
+          return [...previousData, ...result];
+        });
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -49,20 +56,17 @@ function App() {
     };
 
     fetchData();
-  }, []);
-
-  console.log(data);
+  }, [startDateString, endDateString]);
 
   return (
     <div className='main-wrapper'>
       <h1 className='spacestagram-title'>Spacestagram</h1>
       {loading ? <span>loading...</span> : null}
       <div className='card-wrapper'>
-        {data?.map((item) => {
+        {_.orderBy(data, ['date'], ['desc'])?.map((item) => {
           return (
-            <div>
+            <div key={item.date}>
               <Modal
-                key={item.title}
                 date={item.date}
                 title={item.title}
                 mediaUrl={item.url}
@@ -88,7 +92,6 @@ function App() {
                 }}
               />
               <PictureOfTheDay
-                key={item.date}
                 date={item.date}
                 title={item.title}
                 mediaUrl={item.url}
@@ -117,6 +120,12 @@ function App() {
           );
         })}
       </div>
+      <button
+        className='load-more-button'
+        onClick={() => setEndDate(endDate.minus({ days: 9 }))}
+      >
+        load more
+      </button>
     </div>
   );
 }

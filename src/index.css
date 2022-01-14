@@ -151,3 +151,23 @@ a {
   box-shadow: 0 4px 8px 0 rgba(104, 103, 103, 0.2);
   overflow: hidden;
 }
+
+.load-more-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  border-radius: 18px;
+  background-color: rgb(112 108 159);
+  color: #fff;
+  padding: 0.7rem 1.3rem;
+  border: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.load-more-button:hover {
+  background-color: rgb(146 141 205);
+  color: #fff;
+}
