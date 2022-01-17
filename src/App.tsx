@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { PictureOfTheDay } from './components/PictureOfTheDay';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { Modal } from './components/Modal';
+import { TopPage } from './components/TopPage';
 
 export type SpacestagramType = {
   copyright?: string;
@@ -113,12 +114,15 @@ function App() {
           );
         })}
       </div>
-      <button
-        className='load-more-button'
-        onClick={() => setEndDate(endDate.minus({ days: 9 }))}
-      >
-        load more
-      </button>
+      <div className='load-more-top-page-wrapper'>
+        <button
+          className='load-more-button'
+          onClick={() => setEndDate(endDate.minus({ days: 9 }))}
+        >
+          load more
+        </button>
+        <TopPage />
+      </div>
     </div>
   );
 }

@@ -191,6 +191,14 @@ figcaption {
   overflow: hidden;
 }
 
+.load-more-top-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
 .load-more-button {
   display: flex;
   justify-content: center;
@@ -209,4 +217,17 @@ figcaption {
 .load-more-button:hover {
   background-color: rgb(146 141 205);
   color: #fff;
+}
+
+.top-page-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  position: absolute;
+  background-color: transparent;
+  color: rgb(122, 121, 121);
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }

@@ -23,8 +23,8 @@ export const TopPage = () => {
 
   return (
     <>
-      <button onClick={scrollToTop}>
-        <BiArrowToTop size={18} />
+      <button className='top-page-button' onClick={scrollToTop}>
+        <BiArrowToTop size={26} />
       </button>
     </>
   );
