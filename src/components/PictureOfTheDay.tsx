@@ -42,16 +42,9 @@ export const PictureOfTheDay: React.FC<{
           <div className='title-explanation-wrapper'>
             <h2 className='picture-of-the-day-title'>{title}</h2>
             <p className='explanation'>
-              {explanation.substring(0, 55)} ...
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  setIsFocused(true);
-                }}
-              >
-                read more
-              </button>
+              {explanation.length > 75
+                ? explanation.substring(0, 75).concat('...')
+                : explanation}
             </p>
           </div>
           <div className='like-and-date-wrapper'>
