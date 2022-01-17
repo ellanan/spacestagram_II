@@ -109,12 +109,13 @@ figcaption {
   justify-content: center;
   font-size: 1.2rem;
   height: 2em;
-  margin: 0.5rem;
+  margin: 0.7rem;
 }
 
 .explanation {
   font-size: 14px;
-  padding: 0 1rem;
+  padding: 0.4rem 1rem;
+  margin: 0;
 }
 
 .modal-content .explanation {
