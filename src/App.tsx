@@ -69,31 +69,27 @@ function App() {
         {_.orderBy(data, ['date'], ['desc'])?.map((item) => {
           return (
             <div key={item.date}>
-              <Modal
-                date={item.date}
-                title={item.title}
-                mediaUrl={item.url}
-                explanation={item.explanation}
-                mediaType={item.media_type}
-                isLiked={likedItems.includes(item.date)}
-                setIsLiked={(isLiked) => {
-                  setLikedItems(
-                    isLiked
-                      ? [...likedItems, item.date]
-                      : _.without(likedItems, item.date)
-                  );
-                }}
-                isFocused={pictureInFocus === item.date}
-                setIsFocused={(isFocused) => {
-                  if (isFocused) {
-                    setPictureInFocus(item.date);
-                    window.history.pushState(null, '', `?focus=${item.date}`);
-                  } else {
+              {pictureInFocus === item.date && (
+                <Modal
+                  date={item.date}
+                  title={item.title}
+                  mediaUrl={item.url}
+                  explanation={item.explanation}
+                  mediaType={item.media_type}
+                  isLiked={likedItems.includes(item.date)}
+                  setIsLiked={(isLiked) => {
+                    setLikedItems(
+                      isLiked
+                        ? [...likedItems, item.date]
+                        : _.without(likedItems, item.date)
+                    );
+                  }}
+                  onClose={() => {
                     setPictureInFocus(null);
                     window.history.pushState(null, '');
-                  }
-                }}
-              />
+                  }}
+                />
+              )}
               <PictureOfTheDay
                 date={item.date}
                 title={item.title}
@@ -108,15 +104,9 @@ function App() {
                       : _.without(likedItems, item.date)
                   );
                 }}
-                isFocused={pictureInFocus === item.date}
                 setIsFocused={(isFocused) => {
-                  if (isFocused) {
-                    setPictureInFocus(item.date);
-                    window.history.pushState(null, '', `?focus=${item.date}`);
-                  } else {
-                    setPictureInFocus(null);
-                    window.history.pushState(null, '');
-                  }
+                  setPictureInFocus(item.date);
+                  window.history.pushState(null, '', `?focus=${item.date}`);
                 }}
               />
             </div>

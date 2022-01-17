@@ -8,7 +8,6 @@ export const PictureOfTheDay: React.FC<{
   explanation: string;
   isLiked: boolean;
   setIsLiked: (isLiked: boolean) => void;
-  isFocused: boolean;
   setIsFocused: (isFocused: boolean) => void;
 }> = ({
   date,
@@ -18,7 +17,6 @@ export const PictureOfTheDay: React.FC<{
   explanation,
   isLiked,
   setIsLiked,
-  isFocused,
   setIsFocused,
 }) => {
   return (
@@ -26,7 +24,7 @@ export const PictureOfTheDay: React.FC<{
       href={`?focus=${date}`}
       onClick={(e) => {
         e.preventDefault();
-        setIsFocused(!isFocused);
+        setIsFocused(true);
       }}
     >
       <figure className='card' key={date}>
@@ -44,15 +42,15 @@ export const PictureOfTheDay: React.FC<{
           <div className='title-explanation-wrapper'>
             <h2 className='picture-of-the-day-title'>{title}</h2>
             <p className='explanation'>
-              {isFocused ? explanation : `${explanation.substring(0, 55)} ...`}
+              {explanation.substring(0, 55)} ...
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
-                  setIsFocused(!isFocused);
+                  setIsFocused(true);
                 }}
               >
-                {isFocused ? 'show less' : 'read more'}
+                read more
               </button>
             </p>
           </div>
