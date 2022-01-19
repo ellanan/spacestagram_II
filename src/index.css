@@ -1,6 +1,8 @@
 html,
 body,
 #root {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100%;
   background-color: #fff;
@@ -283,4 +285,22 @@ figcaption {
   padding: 0.6rem;
   border: 1px solid #ccc;
   cursor: pointer;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  padding: 1.2rem 0;
+}
+
+.social-media {
+  padding: 0.5rem;
+  color: rgb(146 141 205);
+}
+
+.social-media:hover {
+  color: rgb(184, 178, 247);
 }
