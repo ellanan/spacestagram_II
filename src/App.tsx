@@ -19,7 +19,9 @@ function App() {
       <span className='attribution'>
         Brought to you by NASA's Astronomy Photo of the Day (APOD) API
       </span>
-      {loading ? <span>loading...</span> : null}
+      {loading ? (
+        <span className='loading'>Loading data from Nasa...</span>
+      ) : null}
       <Routes>
         <Route
           path='/'
