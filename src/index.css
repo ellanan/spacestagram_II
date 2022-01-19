@@ -237,14 +237,6 @@ figcaption {
   overflow: hidden;
 }
 
-.load-more-top-page-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-}
-
 .load-more-button {
   display: flex;
   justify-content: center;

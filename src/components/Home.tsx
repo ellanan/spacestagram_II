@@ -18,13 +18,12 @@ export type SpacestagramType = {
   url: string;
 };
 
-export const Home = () => {
-  const [loading, setLoading] = useState<boolean>(true);
+export const Home: React.FC<{
+  setLoading: (loading: boolean) => void;
+  pictureInFocus: string | null;
+  setPictureInFocus: (pictureInFocus: string | null) => void;
+}> = ({ setLoading, pictureInFocus, setPictureInFocus }) => {
   const [data, setData] = useState<Array<SpacestagramType>>([]);
-  const [pictureInFocus, setPictureInFocus] = useState<string | null>(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('focus');
-  });
 
   const [likedItems, setLikedItems] = useLocalStorage<Array<string>>(
     'likedItems',
@@ -57,11 +56,10 @@ export const Home = () => {
     };
 
     fetchData();
-  }, [startDateString, endDateString]);
+  }, [startDateString, endDateString, setLoading]);
 
   return (
     <div className='main-wrapper'>
-      {loading ? <span>loading...</span> : null}
       <div className='card-wrapper'>
         {_.orderBy(data, ['date'], ['desc'])?.map((item) => {
           return (
@@ -110,14 +108,12 @@ export const Home = () => {
           );
         })}
       </div>
-      <div className='load-more-top-page-wrapper'>
-        <button
-          className='load-more-button'
-          onClick={() => setEndDate(endDate.minus({ days: 9 }))}
-        >
-          load more
-        </button>
-      </div>
+      <button
+        className='load-more-button'
+        onClick={() => setEndDate(endDate.minus({ days: 9 }))}
+      >
+        load more
+      </button>
     </div>
   );
 };
