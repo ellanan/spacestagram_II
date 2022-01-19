@@ -6,7 +6,9 @@ import { AiOutlineHeart } from 'react-icons/ai';
 export const Navbar = () => {
   return (
     <div className='navbar-wrapper'>
-      <h1 className='spacestagram-title'>Spacestagram</h1>
+      <NavLink className='spacestagram-title' to='/'>
+        Spacestagram
+      </NavLink>
       <NavLink className='home-button' to='/'>
         <AiOutlineHome size={24} />
       </NavLink>

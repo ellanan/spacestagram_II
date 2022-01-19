@@ -23,6 +23,12 @@ a {
 }
 
 .spacestagram-title {
+  display: block;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
   font-size: 1.8rem;
   text-align: center;
   text-transform: uppercase;
