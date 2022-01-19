@@ -64,9 +64,6 @@ export const Home = () => {
   return (
     <div className='main-wrapper'>
       <Navbar />
-      <span className='attribution'>
-        Brought to you by NASA's Astronomy Photo of the Day (APOD) API
-      </span>
       {loading ? <span>loading...</span> : null}
       <div className='card-wrapper'>
         {_.orderBy(data, ['date'], ['desc'])?.map((item) => {
