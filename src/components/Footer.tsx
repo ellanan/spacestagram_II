@@ -7,7 +7,7 @@ export const Footer = () => {
     <div className='footer-wrapper'>
       <a
         className='social-media'
-        href='https://github.com/ellanan'
+        href='https://github.com/ellanan/spacestagram_II'
         target='_blank'
         rel='noreferrer'
       >
