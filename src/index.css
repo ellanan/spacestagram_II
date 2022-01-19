@@ -55,17 +55,39 @@ a {
   position: relative;
 }
 
-.home-button {
+.navitem {
   display: flex;
   justify-content: center;
   align-items: center;
-  right: 6rem;
-  position: absolute;
   background-color: transparent;
   color: rgb(122, 121, 121);
   padding: 0.6rem;
-  border: none;
-  cursor: pointer;
+  position: absolute;
+}
+
+.navitem::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 2px;
+  background-color: rgb(104 102 102);
+  opacity: 0;
+  transform: scaleX(0.5);
+  transition: all 0.2s ease-in-out;
+}
+.navitem.active::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.home-button {
+  right: 6rem;
 }
 
 .home-button:hover {
@@ -73,16 +95,8 @@ a {
 }
 
 .liked-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   right: 3rem;
-  position: absolute;
-  background-color: transparent;
-  color: rgb(122, 121, 121);
   padding: 0.7rem;
-  border: none;
-  cursor: pointer;
 }
 
 .liked-button:hover {
