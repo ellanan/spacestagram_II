@@ -7,7 +7,7 @@ export const Navbar = () => {
   return (
     <div className='navbar-wrapper'>
       <NavLink className='spacestagram-title' to='/'>
-        Spacestagram
+        Spacestagram II
       </NavLink>
       <NavLink className='home-button' to='/'>
         <AiOutlineHome size={24} />
