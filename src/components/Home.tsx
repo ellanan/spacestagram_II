@@ -4,10 +4,8 @@ import _ from 'lodash';
 import { DateTime } from 'luxon';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import { Navbar } from './Navbar';
 import { PictureOfTheDay } from './PictureOfTheDay';
 import { Modal } from './Modal';
-import { TopPage } from './TopPage';
 
 export type SpacestagramType = {
   copyright?: string;
@@ -63,7 +61,6 @@ export const Home = () => {
 
   return (
     <div className='main-wrapper'>
-      <Navbar />
       {loading ? <span>loading...</span> : null}
       <div className='card-wrapper'>
         {_.orderBy(data, ['date'], ['desc'])?.map((item) => {
@@ -120,7 +117,6 @@ export const Home = () => {
         >
           load more
         </button>
-        <TopPage />
       </div>
     </div>
   );
