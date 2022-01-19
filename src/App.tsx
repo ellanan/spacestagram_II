@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
 import { Liked } from './components/Liked';
 import { Navbar } from './components/Navbar';
-import { TopPage } from './components/TopPage';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -44,7 +43,6 @@ function App() {
           }
         />
       </Routes>
-      <TopPage />
     </div>
   );
 }
