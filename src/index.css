@@ -87,7 +87,7 @@ a {
 }
 
 .home-button {
-  right: 6rem;
+  right: 8rem;
 }
 
 .home-button:hover {
@@ -95,7 +95,7 @@ a {
 }
 
 .liked-button {
-  right: 3rem;
+  right: 5rem;
   padding: 0.7rem;
 }
 
