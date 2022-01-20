@@ -69,6 +69,7 @@ export const Modal: React.FC<{
             </div>
             <h2 className='picture-of-the-day-title'>{title}</h2>
             <p className='explanation'>{explanation}</p>
+            <span className='copy-success-message'>{copySuccessMessage}</span>
             <div className='like-and-date-wrapper'>
               <div>
                 <button
@@ -96,9 +97,6 @@ export const Modal: React.FC<{
                 >
                   <IoShareSocialOutline size={19} />
                 </button>
-                <span className='copy-success-message'>
-                  {copySuccessMessage}
-                </span>
               </div>
               <time className='date-of-capture'>{`Date of capture: ${date}`}</time>
             </div>

@@ -209,7 +209,7 @@ figcaption {
 
 .explanation {
   font-size: 14px;
-  padding: 0.4rem 1rem;
+  padding: 0.3rem 1rem;
   margin: 0;
 }
 
@@ -275,7 +275,7 @@ figcaption {
   font-size: 0.8rem;
   color: rgb(109, 66, 158);
   margin: 0 0.5rem;
-  min-height: 15px;
+  min-height: 16px;
 }
 
 .date-of-capture {
