@@ -173,6 +173,23 @@ figcaption {
   flex-shrink: 0;
 }
 
+.source-link-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.source-link {
+  right: 0;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.8rem;
+  color: rgb(109, 66, 158);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+
 .title-explanation-wrapper {
   display: flex;
   flex-direction: column;

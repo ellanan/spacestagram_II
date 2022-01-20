@@ -19,6 +19,11 @@ export const Modal: React.FC<{
   setIsLiked,
   onClose,
 }) => {
+  let dateString =
+    date.split('-')[0].substring(2, 4) +
+    date.split('-')[1] +
+    date.split('-')[2];
+
   return (
     <div className='modal-container isOpen' onClick={onClose}>
       <div className='modal-content'>
@@ -34,6 +39,20 @@ export const Modal: React.FC<{
             />
           )}
           <figcaption>
+            <div className='source-link-wrapper'>
+              <button
+                className='source-link'
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(
+                    `https://apod.nasa.gov/apod/ap${dateString}.html`,
+                    '_blank'
+                  );
+                }}
+              >
+                Source
+              </button>
+            </div>
             <h2 className='picture-of-the-day-title'>{title}</h2>
             <p className='explanation'>{explanation}</p>
             <div className='like-and-date-wrapper'>
