@@ -81,7 +81,7 @@ export const Home: React.FC<{
                   }}
                   onClose={() => {
                     setPictureInFocus(null);
-                    window.history.pushState(null, '');
+                    window.history.pushState(null, '', window.location.origin);
                   }}
                 />
               )}

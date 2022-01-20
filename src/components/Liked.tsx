@@ -66,7 +66,11 @@ export const Liked: React.FC<{
                   }}
                   onClose={() => {
                     setPictureInFocus(null);
-                    window.history.pushState(null, '');
+                    window.history.pushState(
+                      null,
+                      '',
+                      window.location.pathname
+                    );
                   }}
                 />
               )}
