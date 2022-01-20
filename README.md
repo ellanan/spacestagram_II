@@ -6,9 +6,12 @@ Link to the page: https://spacestagram2.ellanan.com/
 
 # ADDITIONAL Available Features in Spacestagram II
 
-- Liked page which only renders users' liked cards
-- User can read more about the picture by clicking anywhere on the card
-- User can share the original NASA link to friends
+- Liked page which only renders users' favourited pictures
+- User can share the image by clicking on the share button
+- Click anywhere on the card to open the modal
+  - enlarged image
+  - complete explanation
+  - source button to get to NASA's original source
 
 # Available Features in Spacestagram I
 
