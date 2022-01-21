@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Tooltip } from '@chakra-ui/react';
+import Tippy from '@tippyjs/react';
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs';
 import { IoShareSocialOutline } from 'react-icons/io5';
 
@@ -23,19 +23,19 @@ export const Modal: React.FC<{
   setIsLiked,
   onClose,
 }) => {
-  const [copySuccessMessage, setCopySuccessMessage] = useState('');
+  const [copyLinkTooltipMessage, setCopyLinkTooltipMessage] = useState('Share');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCopyLinkTooltipMessage('Share');
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [copyLinkTooltipMessage, setCopyLinkTooltipMessage]);
 
   let dateString =
     date.split('-')[0].substring(2, 4) +
     date.split('-')[1] +
     date.split('-')[2];
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCopySuccessMessage('');
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [copySuccessMessage, setCopySuccessMessage]);
 
   const shareUrl = `https://spacestagram2.ellanan.com/?focus=${date}`;
 
@@ -70,10 +70,12 @@ export const Modal: React.FC<{
             </div>
             <h2 className='picture-of-the-day-title'>{title}</h2>
             <p className='explanation'>{explanation}</p>
-            <span className='copy-success-message'>{copySuccessMessage}</span>
             <div className='like-and-date-wrapper'>
               <div>
-                <Tooltip className='tooltip-modal' label='Like'>
+                <Tippy
+                  content={isLiked ? 'Unlike' : 'Like'}
+                  hideOnClick={false}
+                >
                   <button
                     className='like-button'
                     onClick={(e) => {
@@ -88,20 +90,20 @@ export const Modal: React.FC<{
                       <BsHeart size={18} />
                     )}
                   </button>
-                </Tooltip>
-                <Tooltip className='tooltip-modal' label='Share'>
+                </Tippy>
+                <Tippy content={copyLinkTooltipMessage} hideOnClick={false}>
                   <button
                     className='share-button'
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
                       navigator.clipboard.writeText(shareUrl);
-                      setCopySuccessMessage('Copied link to clipboard!');
+                      setCopyLinkTooltipMessage('Copied link to clipboard!');
                     }}
                   >
                     <IoShareSocialOutline size={19} />
                   </button>
-                </Tooltip>
+                </Tippy>
               </div>
               <time className='date-of-capture'>{`Date of capture: ${date}`}</time>
             </div>

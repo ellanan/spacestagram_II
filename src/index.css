@@ -224,7 +224,7 @@ figcaption {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem 0.5rem 1rem;
+  padding: 0.6rem 0.5rem;
   margin-top: auto;
 }
 
@@ -269,37 +269,6 @@ figcaption {
 
 .share-button svg {
   margin-bottom: -2px;
-}
-
-.tooltip {
-  position: absolute;
-  display: inline-block;
-  border-radius: 2px;
-  padding: 0.2rem;
-  font-size: 0.8rem;
-  color: #fff;
-  background-color: rgba(155, 154, 154, 0.9);
-  text-align: center;
-  transition: all 0.2s ease-in-out;
-}
-
-.tooltip-modal {
-  position: absolute;
-  display: inline-block;
-  border-radius: 2px;
-  padding: 0.2rem;
-  font-size: 0.8rem;
-  color: #fff;
-  text-align: center;
-  transition: all 0.2s ease-in-out;
-  background-color: rgba(0, 0, 0, 1);
-}
-
-.copy-success-message {
-  font-size: 0.8rem;
-  color: rgb(109, 66, 158);
-  margin: 0 0.5rem;
-  min-height: 16px;
 }
 
 .date-of-capture {
@@ -357,19 +326,6 @@ figcaption {
 .load-more-button:hover {
   background-color: rgb(146 141 205);
   color: #fff;
-}
-
-.top-page-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  right: 0;
-  position: absolute;
-  background-color: transparent;
-  color: rgb(122, 121, 121);
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  cursor: pointer;
 }
 
 .footer-wrapper {
@@ -430,13 +386,5 @@ figcaption {
   .modal-content {
     width: 90vw;
     max-height: 80vh;
-  }
-
-  .tooltip {
-    opacity: 0;
-  }
-
-  .tooltip-modal {
-    opacity: 0;
   }
 }
