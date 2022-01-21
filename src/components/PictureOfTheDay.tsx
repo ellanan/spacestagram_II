@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { Tooltip } from '@chakra-ui/react';
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs';
 import { IoShareSocialOutline } from 'react-icons/io5';
 
@@ -64,31 +65,35 @@ export const PictureOfTheDay: React.FC<{
           </div>
           <div className='like-and-date-wrapper'>
             <div>
-              <button
-                className='like-button'
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  setIsLiked(!isLiked);
-                }}
-              >
-                {isLiked ? (
-                  <BsFillHeartFill size={18} color='rgb(237, 73, 86)' />
-                ) : (
-                  <BsHeart size={18} />
-                )}
-              </button>
-              <button
-                className='share-button'
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  navigator.clipboard.writeText(shareUrl);
-                  setCopySuccessMessage('Copied link to clipboard!');
-                }}
-              >
-                <IoShareSocialOutline size={19} />
-              </button>
+              <Tooltip className='tooltip' label='Like'>
+                <button
+                  className='like-button'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setIsLiked(!isLiked);
+                  }}
+                >
+                  {isLiked ? (
+                    <BsFillHeartFill size={18} color='rgb(237, 73, 86)' />
+                  ) : (
+                    <BsHeart size={18} />
+                  )}
+                </button>
+              </Tooltip>
+              <Tooltip className='tooltip' label='Share'>
+                <button
+                  className='share-button'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    navigator.clipboard.writeText(shareUrl);
+                    setCopySuccessMessage('Copied link to clipboard!');
+                  }}
+                >
+                  <IoShareSocialOutline size={19} />
+                </button>
+              </Tooltip>
             </div>
             <time className='date-of-capture'>{`Date of capture: ${date}`}</time>
           </div>
