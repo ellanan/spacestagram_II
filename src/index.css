@@ -431,4 +431,12 @@ figcaption {
     width: 90vw;
     max-height: 80vh;
   }
+
+  .tooltip {
+    opacity: 0;
+  }
+
+  .tooltip-modal {
+    opacity: 0;
+  }
 }
