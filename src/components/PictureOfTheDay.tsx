@@ -40,6 +40,9 @@ export const PictureOfTheDay: React.FC<{
       onClick={(e) => {
         e.preventDefault();
         setIsFocused(true);
+        window.location.href.includes('focus')
+          ? setIsFocused(true)
+          : setIsFocused(false);
       }}
     >
       <figure className='card' key={date}>
