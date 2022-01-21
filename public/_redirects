@@ -5,4 +5,4 @@
 # while Netlify’s servers fetch the new location behind the scenes.
 
 /api/apod   https://api.nasa.gov/planetary/apod 200
- 
+/*          /index.html                         200
