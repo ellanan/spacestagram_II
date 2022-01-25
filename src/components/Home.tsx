@@ -3,9 +3,7 @@ import { useEffect, useState } from 'react';
 import _ from 'lodash';
 import { DateTime } from 'luxon';
 
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { PictureOfTheDay } from './PictureOfTheDay';
-import { Modal } from './Modal';
 
 export type SpacestagramType = {
   copyright?: string;
@@ -20,15 +18,11 @@ export type SpacestagramType = {
 
 export const Home: React.FC<{
   setLoading: (loading: boolean) => void;
-  pictureInFocus: string | null;
-  setPictureInFocus: (pictureInFocus: string | null) => void;
-}> = ({ setLoading, pictureInFocus, setPictureInFocus }) => {
+  likedItems: Array<string>;
+  setItemLikedOrNotLiked: (isLiked: boolean, itemId: string) => void;
+}> = ({ setLoading, likedItems, setItemLikedOrNotLiked }) => {
   const [data, setData] = useState<Array<SpacestagramType>>([]);
-
-  const [likedItems, setLikedItems] = useLocalStorage<Array<string>>(
-    'likedItems',
-    []
-  );
+  const [serverError, setServerError] = useState<boolean>(false);
 
   const [endDate, setEndDate] = useState<DateTime>(DateTime.now());
   const startDate = endDate.minus({ days: 8 });
@@ -39,11 +33,21 @@ export const Home: React.FC<{
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      setServerError(false);
 
       try {
         const response = await fetch(
           `https://spacestagram.ellanan.com/api/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${startDateString}&end_date=${endDateString}`
         );
+
+        const statusCode = response.status;
+        if (statusCode >= 500) {
+          console.log('Server Error');
+          setServerError(true);
+          setLoading(false);
+          return;
+        }
+
         const result = await response.json();
         setData((previousData) => {
           return [...previousData, ...result];
@@ -51,7 +55,7 @@ export const Home: React.FC<{
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        console.log(error);
+        console.error(error);
       }
     };
 
@@ -60,31 +64,13 @@ export const Home: React.FC<{
 
   return (
     <div className='main-wrapper'>
+      {serverError ? (
+        <h3>Server Error. Please try again in a few minutes.</h3>
+      ) : null}
       <div className='card-wrapper'>
         {_.orderBy(data, ['date'], ['desc'])?.map((item) => {
           return (
             <div key={item.date}>
-              {pictureInFocus === item.date && (
-                <Modal
-                  date={item.date}
-                  title={item.title}
-                  mediaUrl={item.url}
-                  explanation={item.explanation}
-                  mediaType={item.media_type}
-                  isLiked={likedItems.includes(item.date)}
-                  setIsLiked={(isLiked) => {
-                    setLikedItems(
-                      isLiked
-                        ? [...likedItems, item.date]
-                        : _.without(likedItems, item.date)
-                    );
-                  }}
-                  onClose={() => {
-                    setPictureInFocus(null);
-                    window.history.pushState(null, '', window.location.origin);
-                  }}
-                />
-              )}
               <PictureOfTheDay
                 date={item.date}
                 title={item.title}
@@ -93,15 +79,7 @@ export const Home: React.FC<{
                 mediaType={item.media_type}
                 isLiked={likedItems.includes(item.date)}
                 setIsLiked={(isLiked) => {
-                  setLikedItems(
-                    isLiked
-                      ? [...likedItems, item.date]
-                      : _.without(likedItems, item.date)
-                  );
-                }}
-                setIsFocused={(isFocused) => {
-                  setPictureInFocus(item.date);
-                  window.history.pushState(null, '', `?focus=${item.date}`);
+                  setItemLikedOrNotLiked(isLiked, item.date);
                 }}
               />
             </div>

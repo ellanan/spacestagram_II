@@ -293,7 +293,6 @@ figcaption {
 
 .isOpen .modal-container {
   z-index: 999;
-  opacity: 1;
 }
 
 .modal-content {

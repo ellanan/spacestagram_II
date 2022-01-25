@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import _ from 'lodash';
 
+import { useLocalStorage } from './hooks/useLocalStorage';
 import { Home } from './components/Home';
 import { Liked } from './components/Liked';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { Modal } from './components/Modal';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
-  const [pictureInFocus, setPictureInFocus] = useState<string | null>(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('focus');
-  });
+
+  const [likedItems, setLikedItems] = useLocalStorage<Array<string>>(
+    'likedItems',
+    []
+  );
+
+  const setItemLikedOrNotLiked = useCallback(
+    (isLiked: boolean, itemId: string) => {
+      setLikedItems(
+        isLiked ? [...likedItems, itemId] : _.without(likedItems, itemId)
+      );
+    },
+    [likedItems, setLikedItems]
+  );
 
   return (
     <>
@@ -28,8 +41,8 @@ function App() {
           element={
             <Home
               setLoading={setLoading}
-              pictureInFocus={pictureInFocus}
-              setPictureInFocus={setPictureInFocus}
+              likedItems={likedItems}
+              setItemLikedOrNotLiked={setItemLikedOrNotLiked}
             />
           }
         />
@@ -38,13 +51,17 @@ function App() {
           element={
             <Liked
               setLoading={setLoading}
-              pictureInFocus={pictureInFocus}
-              setPictureInFocus={setPictureInFocus}
+              likedItems={likedItems}
+              setItemLikedOrNotLiked={setItemLikedOrNotLiked}
             />
           }
         />
       </Routes>
       <Footer />
+      <Modal
+        likedItems={likedItems}
+        setItemLikedOrNotLiked={setItemLikedOrNotLiked}
+      />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 import Tippy from '@tippyjs/react';
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs';
@@ -12,7 +13,6 @@ export const PictureOfTheDay: React.FC<{
   explanation: string;
   isLiked: boolean;
   setIsLiked: (isLiked: boolean) => void;
-  setIsFocused: (isFocused: boolean) => void;
 }> = ({
   date,
   title,
@@ -21,8 +21,9 @@ export const PictureOfTheDay: React.FC<{
   explanation,
   isLiked,
   setIsLiked,
-  setIsFocused,
 }) => {
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const [copyLinkTooltipMessage, setCopyLinkTooltipMessage] = useState('Share');
 
   useEffect(() => {
@@ -35,11 +36,13 @@ export const PictureOfTheDay: React.FC<{
   const shareUrl = `https://spacestagram2.ellanan.com/?focus=${date}`;
 
   return (
-    <a
-      href={`?focus=${date}`}
-      onClick={(e) => {
-        e.preventDefault();
-        setIsFocused(true);
+    <NavLink
+      to={{
+        ...location,
+        search: new URLSearchParams([
+          ...Array.from(searchParams.entries()),
+          ['focus', date],
+        ]).toString(),
       }}
     >
       <figure className='card' key={date}>
@@ -98,6 +101,6 @@ export const PictureOfTheDay: React.FC<{
           </div>
         </figcaption>
       </figure>
-    </a>
+    </NavLink>
   );
 };
