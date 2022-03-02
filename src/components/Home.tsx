@@ -37,7 +37,7 @@ export const Home: React.FC<{
 
       try {
         const response = await fetch(
-          `https://spacestagram.ellanan.com/api/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${startDateString}&end_date=${endDateString}`
+          `https://apod.ellanan.com/api?start_date=${startDateString}&end_date=${endDateString}`
         );
 
         const statusCode = response.status;

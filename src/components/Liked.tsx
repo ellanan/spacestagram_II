@@ -21,9 +21,9 @@ export const Liked: React.FC<{
       try {
         const result = await Promise.all(
           likedItemsArray.map((date) =>
-            fetch(
-              `https://spacestagram.ellanan.com/api/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`
-            ).then((response) => response.json())
+            fetch(`https://apod.ellanan.com/api?date=${date}`).then(
+              (response) => response.json()
+            )
           )
         );
         setLikedData(result);

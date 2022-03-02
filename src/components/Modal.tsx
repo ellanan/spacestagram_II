@@ -39,8 +39,9 @@ export const Modal: React.FC<{
       }
       try {
         const response = await fetch(
-          `https://spacestagram.ellanan.com/api/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${focusedDate}`
+          `https://apod.ellanan.com/api?date=${focusedDate}`
         );
+
         const result = await response.json();
         setFocusedItemData(result);
       } catch (error) {
