@@ -1,6 +1,6 @@
 # Spacestagram II
 
-Frontend web app to view awe-inspiring pictures feteched from NASA's APOD API.
+Frontend web app to view awe-inspiring pictures feteched from from apod-api (https://github.com/ellanan/apod-api).
 
 ## Link to the page:
 
