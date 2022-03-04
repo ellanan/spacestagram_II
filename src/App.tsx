@@ -30,10 +30,13 @@ function App() {
     <>
       <Navbar />
       <span className='attribution'>
-        Brought to you by NASA's Astronomy Photo of the Day (APOD) API
+        Brought to you by NASA's Astronomy Photo of the Day (APOD) &&nbsp;
+        <a className='apod-api' href='https://github.com/ellanan/apod-api'>
+          APOD-API
+        </a>
       </span>
       {loading ? (
-        <span className='loading'>Loading data from Nasa...</span>
+        <span className='loading'>Loading data from APOD-API...</span>
       ) : null}
       <Routes>
         <Route

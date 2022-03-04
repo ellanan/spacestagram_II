@@ -47,6 +47,15 @@ a {
   padding: 0 1rem;
 }
 
+.apod-api {
+  color: rgb(69, 51, 230);
+  text-decoration: underline;
+}
+
+.apod-api:hover {
+  color: rgb(138, 127, 240);
+}
+
 .navbar-wrapper {
   display: flex;
   align-items: center;
