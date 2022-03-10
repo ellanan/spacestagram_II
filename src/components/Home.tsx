@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { DateTime } from 'luxon';
 
 import { PictureOfTheDay } from './PictureOfTheDay';
+import styles from './Home.module.css';
 
 export type SpacestagramType = {
   copyright?: string;
@@ -87,7 +88,7 @@ export const Home: React.FC<{
         })}
       </div>
       <button
-        className='load-more-button'
+        className={styles.LoadMoreButton}
         onClick={() => setEndDate(endDate.minus({ days: 9 }))}
       >
         load more
