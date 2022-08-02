@@ -1,18 +1,22 @@
 import { useEffect, useMemo, useState } from 'react';
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
-
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+// import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs';
 import { IoShareSocialOutline } from 'react-icons/io5';
 
 import { SpacestagramType } from './Home';
+import modalStyles from '../styles/Modal.module.css';
 
 export const Modal: React.FC<{
   likedItems: Array<string>;
   setItemLikedOrNotLiked: (isLiked: boolean, itemId: string) => void;
 }> = ({ likedItems, setItemLikedOrNotLiked }) => {
-  const location = useLocation();
-  const [searchParams] = useSearchParams();
+  const router = useRouter();
+  const { focus } = router.query;
+  // const location = useLocation();
+  // const [searchParams] = useSearchParams();
 
   const [copyLinkTooltipMessage, setCopyLinkTooltipMessage] = useState('Share');
 
@@ -26,20 +30,20 @@ export const Modal: React.FC<{
   const [focusedItemData, setFocusedItemData] =
     useState<SpacestagramType | null>(null);
 
-  const focusedDate = useMemo(() => {
-    const searchParams = new URLSearchParams(location.search);
-    return searchParams.get('focus');
-  }, [location]);
+  // const focusedDate = useMemo(() => {
+  //   const searchParams = new URLSearchParams(location.search);
+  //   return searchParams.get('focus');
+  // }, [location]);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!focusedDate) {
+      if (!focus) {
         setFocusedItemData(null);
         return;
       }
       try {
         const response = await fetch(
-          `https://apod.ellanan.com/api?date=${focusedDate}`
+          `https://apod.ellanan.com/api?date=${focus}`
         );
 
         const result = await response.json();
@@ -50,7 +54,7 @@ export const Modal: React.FC<{
     };
 
     fetchData();
-  }, [focusedDate]);
+  }, [focus]);
 
   if (!focusedItemData) return null;
 
@@ -72,34 +76,39 @@ export const Modal: React.FC<{
   const shareUrl = `https://spacestagram2.ellanan.com/?focus=${date}`;
 
   return (
-    <NavLink
-      className='modal-container isOpen'
-      to={{
-        ...location,
-        search: new URLSearchParams(
-          Array.from(searchParams.entries()).filter(
-            ([key, value]) => key !== 'focus'
-          )
-        ).toString(),
-      }}
+    <Link
+      className={modalStyles.modalContainer + ' ' + modalStyles.modalOpen}
+      href={{ pathname: '/', query: { focus: date } }}
+      // to={{
+      //   ...location,
+      //   search: new URLSearchParams(
+      //     Array.from(searchParams.entries()).filter(
+      //       ([key, value]) => key !== 'focus'
+      //     )
+      //   ).toString(),
+      // }}
     >
-      <div className='modal-content'>
-        <figure className='modal-figure'>
+      <div className={modalStyles.modalContent}>
+        <figure className={modalStyles.modalFigure}>
           {mediaType === 'image' ? (
-            <img className='media' src={mediaUrl} alt='' />
+            <img
+              className={modalStyles.media + ' ' + modalStyles.modalContent}
+              src={mediaUrl}
+              alt=''
+            />
           ) : (
             <iframe
-              className='media'
+              className={modalStyles.media}
               title={title}
               src={mediaUrl}
               allowFullScreen
             />
           )}
           <figcaption>
-            <div className='source-link-wrapper'>
+            <div className={modalStyles.sourceLinkWrapper}>
               <Tippy content="Go to NASA's source page." hideOnClick={false}>
                 <button
-                  className='source-link'
+                  className={modalStyles.sourceLink}
                   onClick={(e) => {
                     e.preventDefault();
                     window.open(
@@ -112,16 +121,16 @@ export const Modal: React.FC<{
                 </button>
               </Tippy>
             </div>
-            <h2 className='picture-of-the-day-title'>{title}</h2>
-            <p className='explanation'>{explanation}</p>
-            <div className='like-and-date-wrapper'>
+            <h2 className={modalStyles.pictureOfTheDayTitle}>{title}</h2>
+            <p className={modalStyles.explanation}>{explanation}</p>
+            <div className={modalStyles.likeAndDateWrapper}>
               <div>
                 <Tippy
                   content={isLiked ? 'Unlike' : 'Like'}
                   hideOnClick={false}
                 >
                   <button
-                    className='like-button'
+                    className={modalStyles.likeButton}
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
@@ -137,7 +146,7 @@ export const Modal: React.FC<{
                 </Tippy>
                 <Tippy content={copyLinkTooltipMessage} hideOnClick={false}>
                   <button
-                    className='share-button'
+                    className={modalStyles.shareButton}
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
@@ -149,11 +158,13 @@ export const Modal: React.FC<{
                   </button>
                 </Tippy>
               </div>
-              <time className='date-of-capture'>{`Date of capture: ${date}`}</time>
+              <time
+                className={modalStyles.dateOfCapture}
+              >{`Date of capture: ${date}`}</time>
             </div>
           </figcaption>
         </figure>
       </div>
-    </NavLink>
+    </Link>
   );
 };

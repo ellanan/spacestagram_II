@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { DateTime } from 'luxon';
 
 import { PictureOfTheDay } from './PictureOfTheDay';
-import styles from './Home.module.css';
+import homeStyles from '../styles/Home.module.css';
 
 export type SpacestagramType = {
   copyright?: string;
@@ -64,11 +64,11 @@ export const Home: React.FC<{
   }, [startDateString, endDateString, setLoading]);
 
   return (
-    <div className='main-wrapper'>
+    <div className={homeStyles.mainWrapper}>
       {serverError ? (
         <h3>Server Error. Please try again in a few minutes.</h3>
       ) : null}
-      <div className='card-wrapper'>
+      <div className={homeStyles.cardWrapper}>
         {_.orderBy(data, ['date'], ['desc'])?.map((item) => {
           return (
             <div key={item.date}>
@@ -88,7 +88,7 @@ export const Home: React.FC<{
         })}
       </div>
       <button
-        className={styles.LoadMoreButton}
+        className={homeStyles.LoadMoreButton}
         onClick={() => setEndDate(endDate.minus({ days: 9 }))}
       >
         load more

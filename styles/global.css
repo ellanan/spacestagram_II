@@ -1,0 +1,19 @@
+html,
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  color: rgb(65, 64, 64);
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

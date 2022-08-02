@@ -1,0 +1,144 @@
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(143, 140, 140, 0.5);
+  z-index: 1;
+}
+
+.isOpen .modalContainer {
+  z-index: 999;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  max-height: 90vh;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.modalFigure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+
+.media {
+  width: 100%;
+  height: 220px;
+  margin: auto;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border: 0;
+}
+
+.modalContent .media {
+  margin: 0;
+  height: 60%;
+  flex-shrink: 0;
+}
+
+.sourceLinkWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.sourceLink {
+  right: 0;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.8rem;
+  color: rgb(109, 66, 158);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+
+.pictureOfTheDayTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  height: 2em;
+  margin: 0.7rem;
+}
+
+.explanation {
+  font-size: 14px;
+  padding: 0.3rem 1rem;
+  margin: 0;
+}
+
+.likeAndDateWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.5rem;
+  margin-top: auto;
+}
+
+.likeButton {
+  display: inline-block;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 0;
+}
+
+.likeButton:hover {
+  background-color: rgba(249, 24, 128, 0.1);
+  border-radius: 50%;
+  color: rgb(237, 73, 86);
+}
+
+.likeButton svg {
+  margin-bottom: -2px;
+}
+
+.shareButton {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.4rem;
+  line-height: 0;
+}
+
+.shareButton:hover {
+  background-color: rgba(214, 146, 241, 0.1);
+  border-radius: 50%;
+  color: rgb(175, 94, 207);
+}
+
+.shareButton svg {
+  margin-bottom: -2px;
+}
+
+.dateOfCapture {
+  font-size: 12px;
+  color: #666;
+  margin-top: 0.5rem;
+}

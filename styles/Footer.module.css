@@ -1,0 +1,17 @@
+.footerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  padding: 1.2rem 0;
+}
+
+.socialMedia {
+  padding: 0.5rem;
+  color: rgb(146 141 205);
+}
+
+.socialMedia:hover {
+  color: rgb(184, 178, 247);
+}

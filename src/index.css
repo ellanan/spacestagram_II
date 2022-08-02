@@ -1,4 +1,4 @@
-html,
+/* html,
 body,
 #root {
   display: flex;
@@ -16,16 +16,16 @@ body,
 a {
   text-decoration: none;
   color: inherit;
-}
+} */
 
-.main-wrapper {
+/* .main-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.spacestagram-title {
+/* .spacestagram-title {
   display: block;
   margin-top: 0.67em;
   margin-bottom: 0.67em;
@@ -35,9 +35,9 @@ a {
   font-size: 1.8rem;
   text-align: center;
   text-transform: uppercase;
-}
+} */
 
-.attribution {
+/* .attribution {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,18 +54,18 @@ a {
 
 .apod-api:hover {
   color: rgb(138, 127, 240);
-}
+} */
 
-.navbar-wrapper {
+/* .navbar-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 1rem;
   width: 100%;
   position: relative;
-}
+} */
 
-.navitem {
+/* .navitem {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,16 +102,16 @@ a {
 
 .home-button:hover {
   color: rgb(65, 64, 64);
-}
+} */
 
-.liked-button {
+/* .liked-button {
   right: 5rem;
   padding: 0.7rem;
 }
 
 .liked-button:hover {
   color: rgb(65, 64, 64);
-}
+} */
 
 .loading {
   display: flex;
@@ -122,16 +122,16 @@ a {
   margin-top: 1rem;
 }
 
-.card-wrapper {
+/* .card-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   margin: 1.5rem 0.8rem 4rem 0.8rem;
   flex-grow: 1;
   flex-shrink: 1;
-}
+} */
 
-.card {
+/* .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 0.6rem;
   max-width: 300px;
@@ -144,16 +144,16 @@ a {
 
 .card:hover {
   transform: scale(1.02);
-}
+} */
 
-.modal-figure {
+/* .modal-figure {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   margin: 0;
-}
+} */
 
 iframe {
   flex-shrink: 0;
@@ -167,7 +167,7 @@ figcaption {
   height: 40%;
 }
 
-.media {
+/* .media {
   width: 100%;
   height: 220px;
   margin: auto;
@@ -181,9 +181,9 @@ figcaption {
   margin: 0;
   height: 60%;
   flex-shrink: 0;
-}
+} */
 
-.source-link-wrapper {
+/* .source-link-wrapper {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -198,16 +198,16 @@ figcaption {
   text-transform: uppercase;
   border: none;
   cursor: pointer;
-}
+} */
 
-.title-explanation-wrapper {
+/* .title-explanation-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.picture-of-the-day-title {
+/* .picture-of-the-day-title {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,7 +220,7 @@ figcaption {
   font-size: 14px;
   padding: 0.3rem 1rem;
   margin: 0;
-}
+} */
 
 .modal-content .explanation {
   font-size: 0.9rem;
@@ -228,16 +228,16 @@ figcaption {
   overflow: auto;
 }
 
-.like-and-date-wrapper {
+/* .like-and-date-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem 0.5rem;
   margin-top: auto;
-}
+} */
 
-.like-button {
+/* .like-button {
   display: inline-block;
   font-size: 1rem;
   text-align: center;
@@ -247,9 +247,9 @@ figcaption {
   cursor: pointer;
   padding: 0.5rem;
   line-height: 0;
-}
+} */
 
-.like-button:hover {
+/* .like-button:hover {
   background-color: rgba(249, 24, 128, 0.1);
   border-radius: 50%;
   color: rgb(237, 73, 86);
@@ -257,9 +257,9 @@ figcaption {
 
 .like-button svg {
   margin-bottom: -2px;
-}
+} */
 
-.share-button {
+/* .share-button {
   display: inline-block;
   text-align: center;
   text-decoration: none;
@@ -278,15 +278,15 @@ figcaption {
 
 .share-button svg {
   margin-bottom: -2px;
-}
+} */
 
-.date-of-capture {
+/* .date-of-capture {
   font-size: 12px;
   color: #666;
   margin-top: 0.5rem;
-}
+} */
 
-.modal-container {
+/* .modal-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -302,9 +302,9 @@ figcaption {
 
 .isOpen .modal-container {
   z-index: 999;
-}
+} */
 
-.modal-content {
+/* .modal-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -314,9 +314,9 @@ figcaption {
   background-color: #fff;
   border-radius: 12px;
   overflow: hidden;
-}
+} */
 
-.footer-wrapper {
+/* .footer-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -332,7 +332,7 @@ figcaption {
 
 .social-media:hover {
   color: rgb(184, 178, 247);
-}
+} */
 
 @media screen and (max-width: 800px) {
   .spacestagram-title {
