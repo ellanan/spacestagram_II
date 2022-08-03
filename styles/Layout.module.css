@@ -5,6 +5,12 @@
   font-size: 13px;
 }
 
+@media screen and (max-width: 800px) {
+  .attribution {
+    margin-top: 1.2rem;
+  }
+}
+
 .apodApi {
   color: rgb(69, 51, 230);
   text-decoration: underline;

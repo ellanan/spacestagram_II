@@ -28,6 +28,13 @@
   overflow: hidden;
 }
 
+@media screen and (max-width: 800px) {
+  .modalContent {
+    width: 90vw;
+    max-height: 80vh;
+  }
+}
+
 .modalFigure {
   display: flex;
   flex-direction: column;
@@ -86,9 +93,9 @@
 }
 
 .explanation {
-  font-size: 14px;
-  padding: 0.3rem 1rem;
-  margin: 0;
+  font-size: 0.9rem;
+  padding: 1rem 1.5rem;
+  overflow: auto;
 }
 
 .likeAndDateWrapper {
