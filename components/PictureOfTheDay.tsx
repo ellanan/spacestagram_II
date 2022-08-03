@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-// import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 import Tippy from '@tippyjs/react';
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs';
 import { IoShareSocialOutline } from 'react-icons/io5';
 
 import pictureStyles from '../styles/PictureOfTheDay.module.css';
+import { useRouter } from 'next/router';
 
 export const PictureOfTheDay: React.FC<{
   date: string;
@@ -25,8 +25,7 @@ export const PictureOfTheDay: React.FC<{
   isLiked,
   setIsLiked,
 }) => {
-  // const location = useLocation();
-  // const [searchParams] = useSearchParams();
+  const router = useRouter();
   const [copyLinkTooltipMessage, setCopyLinkTooltipMessage] = useState('Share');
 
   useEffect(() => {
@@ -41,16 +40,9 @@ export const PictureOfTheDay: React.FC<{
   return (
     <Link
       href={{
-        pathname: '/',
+        pathname: router.pathname,
         query: { focus: date },
       }}
-      // to={{
-      //   ...location,
-      //   search: new URLSearchParams([
-      //     ...Array.from(searchParams.entries()),
-      //     ['focus', date],
-      //   ]).toString(),
-      // }}
     >
       <figure className={pictureStyles.card} key={date}>
         {mediaType === 'image' ? (
@@ -104,9 +96,9 @@ export const PictureOfTheDay: React.FC<{
                 </button>
               </Tippy>
             </div>
-            <time
-              className={pictureStyles.dateOfCapture}
-            >{`Date of capture: ${date}`}</time>
+            <time className={pictureStyles.dateOfCapture}>
+              Date of capture: {date}
+            </time>
           </div>
         </figcaption>
       </figure>

@@ -17,21 +17,32 @@ export type SpacestagramType = {
   url: string;
 };
 
-export const Home: React.FC<{
+export const Home = ({
+  setLoading,
+  likedItems,
+  setItemLikedOrNotLiked,
+  initialItems,
+  initialEndDateISOString,
+}: {
   setLoading: (loading: boolean) => void;
   likedItems: Array<string>;
   setItemLikedOrNotLiked: (isLiked: boolean, itemId: string) => void;
-}> = ({ setLoading, likedItems, setItemLikedOrNotLiked }) => {
-  const [data, setData] = useState<Array<SpacestagramType>>([]);
+  initialItems: Array<SpacestagramType>;
+  initialEndDateISOString: string;
+}) => {
+  const [data, setData] = useState<Array<SpacestagramType>>(initialItems);
   const [serverError, setServerError] = useState<boolean>(false);
 
-  const [endDate, setEndDate] = useState<DateTime>(DateTime.now());
+  const [endDate, setEndDate] = useState<DateTime>(
+    DateTime.fromISO(initialEndDateISOString)
+  );
   const startDate = endDate.minus({ days: 8 });
 
   const endDateString = endDate.toFormat('yyyy-MM-dd');
   const startDateString = startDate.toFormat('yyyy-MM-dd');
 
   useEffect(() => {
+    if (endDate.toISO() === initialEndDateISOString) return;
     const fetchData = async () => {
       setLoading(true);
       setServerError(false);

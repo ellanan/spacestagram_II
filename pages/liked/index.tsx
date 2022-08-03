@@ -1,7 +1,15 @@
 import React from 'react';
 
-const liked = () => {
-  return <div>liked</div>;
+import { Liked } from '../../components/Liked';
+import { Modal } from '../../components/Modal';
+
+const LikedItemsPage = () => {
+  return (
+    <>
+      <Liked />
+      <Modal />
+    </>
+  );
 };
 
-export default liked;
+export default LikedItemsPage;

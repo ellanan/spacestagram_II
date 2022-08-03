@@ -1,25 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import _ from 'lodash';
 
 import { PictureOfTheDay } from './PictureOfTheDay';
 import { SpacestagramType } from './Home';
+import { useApodContext } from '../hooks/useApodContext';
+import likedStyles from '../styles/Liked.module.css';
 
-export const Liked: React.FC<{
-  setLoading: (loading: boolean) => void;
-  likedItems: Array<string>;
-  setItemLikedOrNotLiked: (isLiked: boolean, itemId: string) => void;
-}> = ({ setLoading, likedItems, setItemLikedOrNotLiked }) => {
+export const Liked = () => {
   const [likedData, setLikedData] = useState<Array<SpacestagramType>>([]);
 
-  useEffect(() => {
-    const likedItemsArray = likedItems.map((item) => item);
+  const { setLoading, likedItems, setItemLikedOrNotLiked } = useApodContext();
 
+  useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
 
       try {
         const result = await Promise.all(
-          likedItemsArray.map((date) =>
+          likedItems.map((date) =>
             fetch(`https://apod.ellanan.com/api?date=${date}`).then(
               (response) => response.json()
             )
@@ -34,11 +32,11 @@ export const Liked: React.FC<{
     };
 
     fetchData();
-  }, [likedItems, setLoading]);
+  }, [likedItems, setLoading, setLikedData]);
 
   return (
-    <div className='main-wrapper'>
-      <div className='card-wrapper'>
+    <div className={likedStyles.mainWrapper}>
+      <div className={likedStyles.cardWrapper}>
         {_.orderBy(likedData, ['date'], ['desc']).map((item) => {
           return (
             <div key={item.date}>

@@ -58,11 +58,11 @@
   color: rgb(65, 64, 64);
 }
 
-.liked-button {
+.likedButton {
   right: 5rem;
   padding: 0.7rem;
 }
 
-.liked-button:hover {
+.likedButton:hover {
   color: rgb(65, 64, 64);
 }

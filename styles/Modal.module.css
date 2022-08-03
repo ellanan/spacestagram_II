@@ -53,6 +53,12 @@
   flex-shrink: 0;
 }
 
+.modalContent figcaption {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+}
+
 .sourceLinkWrapper {
   display: flex;
   justify-content: flex-end;

@@ -14,38 +14,20 @@ export const Navbar = () => {
       <Link href='/'>
         <a className={navbarStyles.spacestagramTitle}>Spacestagram II</a>
       </Link>
-      <Link
-        aria-label='Home'
-        // className={({ isActive }) =>
-        //   `navitem home-button ${isActive ? 'active' : ''}`
-        // }
-        href='/'
-      >
+      <Link aria-label='Home' href='/'>
         <a
-          className={
-            navbarStyles.navitem + navbarStyles.homeButton + router.pathname ===
-            '/'
-              ? navbarStyles.active
-              : ''
-          }
+          className={`${navbarStyles.navitem} ${navbarStyles.homeButton} ${
+            router.pathname === '/' ? navbarStyles.active : ''
+          }`}
         >
           <AiOutlineHome size={24} />
         </a>
       </Link>
-      <Link
-        aria-label='Liked'
-        // className={({ isActive }) =>
-        //   `navitem liked-button ${isActive ? 'active' : ''}`
-        // }
-        href='/liked'
-      >
+      <Link aria-label='Liked' href='/liked'>
         <a
-          className={
-            navbarStyles.navitem + navbarStyles.likeButton + router.pathname ===
-            '/'
-              ? navbarStyles.active
-              : ''
-          }
+          className={`${navbarStyles.navitem} ${navbarStyles.likedButton} ${
+            router.pathname === '/liked' ? navbarStyles.active : ''
+          }`}
         >
           <AiOutlineHeart size={24} />
         </a>
