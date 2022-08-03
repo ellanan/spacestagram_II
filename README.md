@@ -34,6 +34,7 @@ Modal:
 ## Technologies used
 
 - React
+- Next.js
 - TypeScript
 - CSS
 - HTML
