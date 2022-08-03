@@ -1,0 +1,15 @@
+.attribution {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
+.apodApi {
+  color: rgb(69, 51, 230);
+  text-decoration: underline;
+}
+
+.apodApi:hover {
+  color: rgb(138, 127, 240);
+}
