@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import _ from 'lodash';
 import { DateTime } from 'luxon';
 
@@ -43,6 +42,7 @@ export const Home = ({
 
   useEffect(() => {
     if (endDate.toISO() === initialEndDateISOString) return;
+
     const fetchData = async () => {
       setLoading(true);
       setServerError(false);

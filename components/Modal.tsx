@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-// import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import { BsHeart, BsFillHeartFill } from 'react-icons/bs';
 import { IoShareSocialOutline } from 'react-icons/io5';

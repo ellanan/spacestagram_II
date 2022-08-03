@@ -7,7 +7,7 @@ import 'tippy.js/dist/tippy.css';
 
 import { ApodContextProvider } from '../hooks/useApodContext';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ApodContextProvider>
       <Layout>
@@ -15,6 +15,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Layout>
     </ApodContextProvider>
   );
-}
+};
 
 export default MyApp;

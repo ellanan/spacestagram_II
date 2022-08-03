@@ -1,17 +1,17 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React from 'react';
 
 import { Home, SpacestagramType } from '../components/Home';
 import { Modal } from '../components/Modal';
 import { useApodContext } from '../hooks/useApodContext';
 import { DateTime } from 'luxon';
 
-function Homepage({
+const Homepage = ({
   initialItems,
   initialEndDateISOString,
 }: {
   initialItems: Array<SpacestagramType>;
   initialEndDateISOString: string;
-}) {
+}) => {
   const { setLoading, likedItems, setItemLikedOrNotLiked } = useApodContext();
 
   return (
@@ -26,7 +26,7 @@ function Homepage({
       <Modal />
     </>
   );
-}
+};
 
 export default Homepage;
 
