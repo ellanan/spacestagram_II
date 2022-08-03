@@ -21,15 +21,15 @@ https://spacestagram2.ellanan.com/
 
 Home Page:
 
-![This is an image](https://github.com/ellanan/spacestagram_II/blob/main/src/images/homepage.png)
+![This is an image](https://github.com/ellanan/spacestagram_II/blob/main/public/images/homepage.png)
 
 Liked Page:
 
-![This is an image](https://github.com/ellanan/spacestagram_II/blob/main/src/images/likedpage.png)
+![This is an image](https://github.com/ellanan/spacestagram_II/blob/main/public/images/likedpage.png)
 
 Modal:
 
-![This is an image](https://github.com/ellanan/spacestagram_II/blob/main/src/images/modal.png)
+![This is an image](https://github.com/ellanan/spacestagram_II/blob/main/public/images/modal.png)
 
 ## Technologies used
 
